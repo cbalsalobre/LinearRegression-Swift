@@ -33,10 +33,21 @@ func linearRegression (array: [regressionInput]) -> (intercept: Double, slope: D
         sumY2 += (arrayItem.yValue * arrayItem.yValue)
     }
     slope = ((Double(numberOfItems) * sumXY) - (sumX * sumY)) / ((Double(numberOfItems) * sumX2) - (sumX * sumX))
-    intercept = ((sumY * sumX2 - (sumX * sumXY)) / ((Double(numberOfItems) * sumX2) - (sumX * sumX))
+    intercept = (sumY * sumX2 - (sumX * sumXY)) / ((Double(numberOfItems) * sumX2) - (sumX * sumX))
     correlation = ((Double(numberOfItems) * sumXY) - (sumX * sumY)) / (sqrt(Double(numberOfItems) * sumX2 - (sumX * sumX)) * sqrt(Double(numberOfItems) * sumY2 - (sumY * sumY)))
     return (intercept, slope, correlation)
 }
+
+//Insert following code where needed, for example inside viewDidLoad
+        let pair1 = regressionInput(xValue: 0.84,yValue: 55.18)
+        let pair2 = regressionInput(xValue: 0.71,yValue: 64.09)
+        let pair3 = regressionInput(xValue: 0.62,yValue: 72.99)
+        
+        let finalArray: [regressionInput] = [pair1,pair2,pair3]
+        
+        linearRegression(finalArray)
+        
+        print(linearRegression(finalArray).intercept,linearRegression(finalArray).slope,linearRegression(finalArray).correlation)
 
 
 
